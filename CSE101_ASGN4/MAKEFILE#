@@ -1,0 +1,23 @@
+CXX = g++
+CXXFLAGS = -Wall
+
+OBJECTS = BST.o FileHandle.o customstring.o
+
+wordrange: $(OBJECTS)
+	$(CXX) -g $(CXXFLAGS) -o wordrange $(OBJECTS)
+
+BST.o: BST.cpp BST.h customstring.h
+	$(CXX) -g $(CXXFLAGS) -c BST.cpp
+
+
+
+FileHandle.o: BST.cpp BST.h FileHandle.cpp
+	$(CXX) -g $(CXXFLAGS) -c FileHandle.cpp
+
+customstring.o: customstring.cpp customstring.h
+	$(CXX) $(CXXFLAGS) -c CustomString.cpp
+	
+
+clean:
+	rm -f *.o
+	rm wordrange		
